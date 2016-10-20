@@ -21,11 +21,10 @@ RUN set -x \
                      tar \
  && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
  && tar xzvf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
- && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz
+ && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
  && apk del curl \
             tar \
  && rm -rf /var/cache/apk/*
- # && curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat.template.json
  
 ###############################################################################
 #                                   START
@@ -37,4 +36,3 @@ RUN chmod +x docker-entrypoint.sh filebeat \
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "filebeat", "-c", "filebeat.yml", "-d", "publish" ]
-# CMD [ "filebeat", "-e", "-c", "filebeat.yml" ]
