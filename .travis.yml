@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - echo "Build local image"
+  - docker build -t filebeat .
+  - docker images
+  - echo "Run local image"
+  - docker run --name filebeat filebeat
+  - docker ps -a
+  - docker logs filebeat
+  - echo "Testing public image on Docker Hub"
+  - docker run --name nguoianphu-filebeat nguoianphu/docker-filebeat
+  - docker ps -a
+  - docker logs nguoianphu-filebeat  
+  - docker images
