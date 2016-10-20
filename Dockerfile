@@ -31,8 +31,10 @@ RUN set -x \
 ############################################################################### 
 
 COPY docker-entrypoint.sh /
-RUN chmod +x docker-entrypoint.sh filebeat \
- && ls -la /
+RUN chmod +x docker-entrypoint.sh filebeat
+
+ENV PATH ${PATH}:/
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "filebeat", "-e", "-c", "filebeat.yml", "-d", "publish" ]
 # CMD [ "filebeat", "-e", "-c", "filebeat.yml" ]
