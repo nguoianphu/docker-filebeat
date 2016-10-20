@@ -35,4 +35,4 @@ RUN chmod +x docker-entrypoint.sh filebeat \
  && ln -s /filebeat /bin/filebeat
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD [ "filebeat", "-c", "filebeat.yml", "-d", "publish" ]
+CMD []
