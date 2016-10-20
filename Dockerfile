@@ -21,9 +21,9 @@ RUN set -x \
                      curl \
                      tar \
  && rm -rf /var/cache/apk/* \
- && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -O /tmp/filebeat.tar.gz \
- && tar xzf /tmp/filebeat.tar.gz -C / --strip-components=1 \
- && rm -rf /tmp/filebeat*
+ && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
+ && tar xzf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
+ && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz
  # && curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat.template.json
  
 ###############################################################################
