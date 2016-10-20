@@ -19,6 +19,7 @@ RUN set -x \
  && apk add --update bash \
                      curl \
                      tar \
+					 openssl \
  && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
  && tar xzvf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
  && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
@@ -28,6 +29,7 @@ RUN set -x \
  && apk add glibc-2.23-r3.apk \
  && apk del curl \
             tar \
+			openssl \
  && rm -rf /var/cache/apk/*
  
 ###############################################################################
