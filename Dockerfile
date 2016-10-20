@@ -22,7 +22,7 @@ RUN set -x \
                      tar \
  && rm -rf /var/cache/apk/* \
  && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
- && tar xzf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
+ && tar xzvf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
  && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz
  # && curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat.template.json
  
@@ -31,7 +31,8 @@ RUN set -x \
 ############################################################################### 
 
 COPY docker-entrypoint.sh /
-RUN chmod +x docker-entrypoint.sh filebeat
+RUN chmod +x docker-entrypoint.sh filebeat \
+ && ls -la /
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD [ "./filebeat", "-e", "-c", "filebeat.yml", "-d", "publish" ]
+CMD [ "filebeat", "-e", "-c", "filebeat.yml", "-d", "publish" ]
 # CMD [ "filebeat", "-e", "-c", "filebeat.yml" ]
