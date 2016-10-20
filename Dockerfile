@@ -18,7 +18,8 @@ ENV FILEBEAT_VERSION=1.3.1
 RUN set -x \
  && apk add --update bash \
                      wget \
-                     curl \
+                     # curl \
+                     tar \
  && rm -rf /var/cache/apk/* \
  && wget https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -O /tmp/filebeat.tar.gz \
  && tar xzf /tmp/filebeat.tar.gz -C / --strip-components=1 \
