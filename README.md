@@ -6,7 +6,7 @@ Filebeat is the next-generation Logstash Forwarder designed to quickly and relia
 
 Filebeat 5.x Docker image. Alpine OS 3.x.
 
-[![Build Status](https://travis-ci.org/nguoianphu/docker-filebeat.svg?branch=master)](https://travis-ci.org/nguoianphu/docker-filebeat) [![Image size](https://images.microbadger.com/badges/image/nguoianphu/docker-filebeat:master.svg)](https://microbadger.com/images/nguoianphu/docker-filebeat "Get your own image badge on microbadger.com")
+[![Build Status](https://travis-ci.org/nguoianphu/docker-filebeat.svg?branch=master)](https://travis-ci.org/nguoianphu/docker-filebeat) [![Image size](https://images.microbadger.com/badges/image/nguoianphu/docker-filebeat.svg)](https://microbadger.com/images/nguoianphu/docker-filebeat "Get your own image badge on microbadger.com")
 
 - Filebeat 5.0.0
 - OS is Alpine 3.4 64bit
@@ -22,3 +22,8 @@ Filebeat 5.x Docker image. Alpine OS 3.x.
 
 ## Official Docs
     https://www.elastic.co/guide/en/beats/filebeat/current/index.html
+    
+    
+# Docker Filebeat 1.3.x
+
+Go to ```1``` branch at     [![Build Status](https://travis-ci.org/nguoianphu/docker-filebeat.svg?branch=1)](https://github.com/nguoianphu/docker-filebeat/tree/1)
