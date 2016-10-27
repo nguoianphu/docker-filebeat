@@ -13,14 +13,14 @@ MAINTAINER Tuan Vo <vohungtuan@gmail.com>
 #                                INSTALLATION
 ###############################################################################
 
-ENV FILEBEAT_VERSION=1.3.1
+ENV FILEBEAT_VERSION=5.0.0
 
 RUN set -x \
  && apk add --update bash \
                      curl \
                      tar \
-					 openssl \
- && curl -L -O https://download.elastic.co/beats/filebeat/filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
+					 openssl \                    
+ && curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
  && tar xzvf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz -C / --strip-components=1 \
  && rm -rf filebeat-${FILEBEAT_VERSION}-x86_64.tar.gz \
  && apk --no-cache add ca-certificates \
