@@ -1,17 +1,22 @@
 sudo: required
+
+dist: focal
+
 services:
   - docker
 
+before_script:
+  - mkdir -p ~/.docker/cli-plugins
+  - wget -O - https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64 > ~/.docker/cli-plugins/docker-buildx
+  - chmod a+x ~/.docker/cli-plugins/docker-buildx
+  - docker run --rm --privileged docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+  - docker buildx create --use --name mybuilder
+
 script:
-  - echo "Build local image"
-  - docker build -t filebeat .
-  - docker images
-  - echo "Run local image"
-  - docker run -d --name filebeat filebeat
-  - docker ps -a
-  - docker logs filebeat
+  - echo "Build and push both amd64 and arm64 images"
+  - docker login -u ${USERNAME} -p ${PASSWORD}
+  - docker buildx build --platform linux/amd64,linux/arm64 -t nguoianphu/docker-filebeat:latest --push .
   - echo "Testing public image on Docker Hub"
   - docker run -d --name nguoianphu-filebeat nguoianphu/docker-filebeat
   - docker ps -a
-  - docker logs nguoianphu-filebeat  
-  - docker images
+  - docker logs nguoianphu-filebeat
