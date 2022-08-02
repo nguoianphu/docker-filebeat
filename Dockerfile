@@ -13,7 +13,7 @@ MAINTAINER Tuan Vo <vohungtuan@gmail.com>
 #                                INSTALLATION
 ###############################################################################
 
-ENV FILEBEAT_VERSION=7.14.0
+ENV FILEBEAT_VERSION=8.3.3
 
 RUN if [ `uname -m` = "aarch64" ] ; then \
        arch="arm64"; \
